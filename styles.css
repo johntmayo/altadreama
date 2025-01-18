@@ -9,6 +9,7 @@ body {
     border-radius: 8px;
     text-align: center;
     max-width: 600px;
+    margin: 0 auto; /* Centers content */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -26,16 +27,28 @@ a {
 
 #background img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -10px; /* Moves image slightly above the viewport */
+    left: -10px; /* Moves image slightly left of the viewport */
+    width: calc(100% + 20px); /* Enlarges width slightly */
+    height: calc(100% + 20px); /* Enlarges height slightly */
     object-fit: cover;
     opacity: 0;
     transition: opacity 2s ease-in-out;
-    filter: blur(5px); /* Adds the blur effect */
+    filter: blur(5px); /* Keeps the blur effect, but no visible edges */
 }
 
 #background img.active {
     opacity: 1;
+}
+
+/* Add a buffer for mobile devices */
+@media (max-width: 600px) {
+    #content {
+        max-width: 90%; /* Ensures a buffer on both sides */
+        padding: 15px; /* Slightly smaller padding */
+    }
+
+    p {
+        font-size: 16px; /* Slightly smaller font for smaller screens */
+    }
 }
